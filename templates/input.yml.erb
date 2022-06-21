@@ -121,6 +121,9 @@
     <%- if @multiline['timeout'] -%>
     timeout: <%= @multiline['timeout'] %>
     <%- end -%>
+    <%- if @multiline['flush_pattern'] -%>
+    flush_pattern: '<%= @multiline['flush_pattern'] %>'
+    <%- end -%>
   <%- end -%>
   tail_files: <%= @tail_files %>
 
@@ -203,6 +206,12 @@
     <%- @ssl.each_pair do |k, v| -%>
     <%= k %>: <%= v %>
     <%- end -%>
+  <%- end -%>
+  <%- if @index -%>
+  index: <%= @index %>
+  <%- end -%>
+  <%- if @publisher_pipeline_disable_host -%>
+  publisher_pipeline.disable_host: <%= @publisher_pipeline_disable_host %>
   <%- end -%>
   <%- if @tags.length > 0 -%>
   tags:
