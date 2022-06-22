@@ -20,7 +20,7 @@ class filebeat::install::windows {
     provider => powershell,
   }
 
-  if ! defined(File[$filebeat::install_dir]) {
+  if ((! defined(File[$filebeat::install_dir])) and ($filebeat::package_ensure != 'absent')) {
     file { $filebeat::install_dir:
       ensure => directory,
     }
